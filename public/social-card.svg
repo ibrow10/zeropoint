@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b0b0b"/>
+      <stop offset="100%" stop-color="#171717"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#a855f7" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#ec4899" stop-opacity="0.35"/>
+    </linearGradient>
+    <filter id="soft">
+      <feGaussianBlur stdDeviation="40"/>
+    </filter>
+  </defs>
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <!-- Accent glow -->
+  <ellipse cx="300" cy="580" rx="460" ry="180" fill="url(#accent)" filter="url(#soft)"/>
+  <ellipse cx="1000" cy="80" rx="420" ry="160" fill="url(#accent)" filter="url(#soft)"/>
+
+  <!-- Watermark FL -->
+  <g opacity="0.08" fill="#ffffff">
+    <text x="70" y="380" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Inter,Arial,sans-serif" font-weight="900" font-size="320" letter-spacing="2">FL</text>
+  </g>
+
+  <!-- Border card -->
+  <rect x="40" y="40" width="1120" height="550" rx="28" fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="2"/>
+
+  <!-- Title -->
+  <text x="80" y="200" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Inter,Arial,sans-serif" font-weight="900" font-size="56" fill="#ffffff" letter-spacing="1.2">
+    Founder Labs — global ambition
+  </text>
+  <text x="80" y="262" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Inter,Arial,sans-serif" font-weight="900" font-size="56" fill="#ffffff" letter-spacing="1.2">
+    from Northern Ireland
+  </text>
+
+  <!-- Subheading -->
+  <text x="80" y="330" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Inter,Arial,sans-serif" font-size="28" fill="#e5e7eb">
+    We help you <tspan fill="#f6be00" font-weight="800">build</tspan>, <tspan fill="#f6be00" font-weight="800">sell</tspan>, <tspan fill="#f6be00" font-weight="800">scale</tspan> and <tspan fill="#f6be00" font-weight="800">raise</tspan>.
+  </text>
+
+  <!-- Footer chip -->
+  <rect x="80" y="380" rx="10" ry="10" width="420" height="56" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)"/>
+  <text x="100" y="417" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Inter,Arial,sans-serif" font-size="22" fill="#ffffff" opacity="0.92">Backed by operators. Built for founders.</text>
+
+  <!-- Corner mark -->
+  <rect x="1040" y="500" width="80" height="80" rx="8" fill="#000" stroke="rgba(255,255,255,0.2)"/>
+  <text x="1064" y="556" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Inter,Arial,sans-serif" font-weight="900" font-size="28" fill="#ffffff">FL</text>
+</svg>
+

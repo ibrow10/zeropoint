@@ -1,0 +1,34 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# Vite
+/dist
+/.vite
+.vite-cache/
+
+# Env
+.env*
+!.env.example
+
+# Mac
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Build outputs
+coverage/
+*.tsbuildinfo
+
+# Misc
+*.local
+
+# Local Netlify folder
+.netlify
