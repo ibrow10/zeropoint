@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blanche — First Cheque AI Fund, Northern Ireland</title>
+  <meta name="description" content="Capital, compute, and network for AI-native companies building from first principles in Northern Ireland.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'b-bg':     '#0A0A0F',
+            'b-text':   '#EAE8E1',
+            'b-muted':  '#545262',
+            'b-subtle': '#18181F',
+            'b-rule':   '#1E1E2C',
+            'b-accent': '#4361EE',
+            'b-dim':    '#2A43D4',
+          },
+          fontFamily: {
+            display: ['"Space Grotesk"', 'sans-serif'],
+            body:    ['Inter', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ── Reset ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      background: #0A0A0F;
+    }
+
+    body {
+      background: #0A0A0F;
+      color: #EAE8E1;
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    ::selection {
+      background: #4361EE;
+      color: #fff;
+    }
+
+    /* ── Navigation ────────────────────────────────────── */
+    .site-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.75rem 2.5rem;
+      border-bottom: 1px solid transparent;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+
+    .site-nav.scrolled {
+      background: rgba(10, 10, 15, 0.90);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom-color: #1E1E2C;
+    }
+
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 0.8125rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #EAE8E1;
+      text-decoration: none;
+    }
+
+    .nav-cta {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      color: #4361EE;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+    .nav-cta:hover { color: #EAE8E1; }
+
+    /* ── Hero ──────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 2.5rem 10vmax;
+      overflow: hidden;
+    }
+
+    /* Grain texture */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+      opacity: 0.055;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 960px;
+    }
+
+    .hero-kicker {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 0.6875rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #545262;
+      margin-bottom: 3rem;
+    }
+
+    .hero-h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: clamp(2.8rem, 6.5vw, 5.5rem);
+      line-height: 1.04;
+      letter-spacing: -0.025em;
+      color: #EAE8E1;
+      margin-bottom: 2.25rem;
+    }
+
+    .hero-sub {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: clamp(1rem, 1.4vw, 1.2rem);
+      line-height: 1.7;
+      color: #545262;
+      max-width: 440px;
+      margin-bottom: 3.5rem;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 0.8125rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #EAE8E1;
+      background: #4361EE;
+      padding: 1rem 2.75rem;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+    .hero-cta:hover { background: #2A43D4; }
+
+    /* ── Sections ──────────────────────────────────────── */
+    .section {
+      border-top: 1px solid #1E1E2C;
+      padding: 9rem 2.5rem;
+    }
+
+    .section-inner       { max-width: 680px; }
+    .section-inner--wide { max-width: 860px; }
+
+    /* Eyebrow row */
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .eyebrow-rule {
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: #4361EE;
+      flex-shrink: 0;
+    }
+
+    .eyebrow-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 0.6875rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #545262;
+    }
+
+    /* ── Prose styles ──────────────────────────────────── */
+    .prose {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 1.125rem;
+      line-height: 1.82;
+      color: #EAE8E1;
+    }
+
+    .prose-dim {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 0.9375rem;
+      line-height: 1.75;
+      color: #545262;
+    }
+
+    .prose-stack > * + * { margin-top: 1.75rem; }
+
+    /* ── What We Back — example list ───────────────────── */
+    .example-list { margin-top: 2.5rem; }
+
+    .example-item {
+      padding: 1.25rem 0;
+      border-top: 1px solid #1E1E2C;
+    }
+
+    .example-item:last-child { border-bottom: 1px solid #1E1E2C; }
+
+    .example-item p {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #EAE8E1;
+    }
+
+    .example-caption {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 0.6875rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #545262;
+      margin-bottom: 1.75rem;
+    }
+
+    /* ── What You Get — resource grid ──────────────────── */
+    .resource-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .resource-item {
+      padding: 2.75rem 0;
+      border-top: 1px solid #1E1E2C;
+    }
+
+    .resource-item:nth-child(odd)  { padding-right: 4rem; }
+    .resource-item:nth-child(even) {
+      padding-left: 4rem;
+      border-left: 1px solid #1E1E2C;
+    }
+
+    .resource-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 1.0625rem;
+      color: #EAE8E1;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.875rem;
+    }
+
+    /* ── Apply form ────────────────────────────────────── */
+    .form-stack { display: flex; flex-direction: column; gap: 3rem; }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.625rem; }
+
+    .form-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 0.6875rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #545262;
+    }
+
+    .form-field {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #1E1E2C;
+      border-radius: 0;
+      outline: none;
+      width: 100%;
+      padding: 0.75rem 0;
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 1rem;
+      color: #EAE8E1;
+      transition: border-color 0.2s ease;
+      -webkit-appearance: none;
+    }
+
+    .form-field:focus  { border-bottom-color: #4361EE; }
+
+    .form-field::placeholder { color: #2A2A3A; }
+
+    .submit-btn {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 0.8125rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #EAE8E1;
+      background: #4361EE;
+      border: none;
+      padding: 1rem 2.75rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      -webkit-appearance: none;
+    }
+    .submit-btn:hover { background: #2A43D4; }
+
+    .form-success {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .form-success p {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      color: #4361EE;
+      letter-spacing: -0.01em;
+    }
+
+    /* ── Footer ────────────────────────────────────────── */
+    .site-footer {
+      border-top: 1px solid #1E1E2C;
+      padding: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 0.8125rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #545262;
+    }
+
+    .footer-note {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 0.75rem;
+      color: #545262;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── Responsive ────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .site-nav { padding: 1.5rem; }
+
+      .hero { padding: 0 1.5rem 5rem; }
+
+      .section { padding: 5.5rem 1.5rem; }
+
+      .resource-grid { grid-template-columns: 1fr; }
+      .resource-item:nth-child(odd)  { padding-right: 0; }
+      .resource-item:nth-child(even) { padding-left: 0; border-left: none; }
+
+      .site-footer { padding: 2rem 1.5rem; }
+    }
+
+    @media (max-width: 640px) {
+      .hero-h1 br { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Navigation ──────────────────────────────────── -->
+  <nav class="site-nav" id="nav">
+    <a href="#top" class="nav-logo">Blanche</a>
+    <a href="#apply" class="nav-cta">Apply →</a>
+  </nav>
+
+
+  <!-- ─── ① Hero ──────────────────────────────────────── -->
+  <section class="hero" id="top">
+    <div class="hero-inner">
+
+      <p class="hero-kicker">Belfast, Northern Ireland</p>
+
+      <h1 class="hero-h1">
+        The first cheque<br>
+        for founders who<br>
+        see what's coming.
+      </h1>
+
+      <p class="hero-sub">
+        Capital, compute, and network for AI-native companies
+        building from first principles.
+      </p>
+
+      <a href="#apply" class="hero-cta">Apply</a>
+
+    </div>
+  </section>
+
+
+  <!-- ─── ② The Gap ───────────────────────────────────── -->
+  <section class="section" id="gap">
+    <div class="section-inner">
+
+      <div class="eyebrow">
+        <span class="eyebrow-rule"></span>
+        <span class="eyebrow-label">The Gap</span>
+      </div>
+
+      <div class="prose-stack">
+        <p class="prose">
+          Northern Ireland recorded 13 first-equity deals in 2023.
+          Across all sectors. For a region with genuine technical depth —
+          a strong university pipeline, world-class cyber and fintech
+          clusters, and a generation of founders who've watched Belfast
+          become a serious tech hub — the funding infrastructure still
+          isn't built for what comes next.
+        </p>
+        <p class="prose">
+          Most early-stage capital here is milestone-based, syndicate-led,
+          or structured around de-risking for a seed round that may never
+          arrive. Nobody is writing a first cheque into an AI-native company
+          at the idea stage. Not because the talent isn't here.
+          Because the fund doesn't exist.
+        </p>
+        <p class="prose">
+          Blanche is that fund.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ─── ③ What We Back ──────────────────────────────── -->
+  <section class="section" id="back">
+    <div class="section-inner">
+
+      <div class="eyebrow">
+        <span class="eyebrow-rule"></span>
+        <span class="eyebrow-label">What We Back</span>
+      </div>
+
+      <p class="prose" style="margin-bottom: 3rem;">
+        We back founders with deep domain knowledge who are using AI to
+        rebuild something from first principles. Not wrappers. Not
+        productivity tools. Genuine reconstruction — where the incumbent
+        model becomes structurally untenable.
+      </p>
+
+      <p class="example-caption">The kind of founder we're looking for</p>
+
+      <div class="example-list">
+        <div class="example-item">
+          <p>A former insurance underwriter rebuilding how commercial risk is priced and assessed.</p>
+        </div>
+        <div class="example-item">
+          <p>A logistics operator who knows exactly where the inefficiencies are — and why they've survived this long.</p>
+        </div>
+        <div class="example-item">
+          <p>A healthcare administrator who understands why clinical pathways fail and what a system designed for AI looks like instead.</p>
+        </div>
+        <div class="example-item">
+          <p>A compliance professional who sees that entire functions will be automated — and is building the replacement.</p>
+        </div>
+      </div>
+
+      <p class="prose-dim" style="margin-top: 2.5rem;">
+        The pattern is someone who has spent years inside a system that's
+        about to break, and is building what replaces it.
+      </p>
+
+    </div>
+  </section>
+
+
+  <!-- ─── ④ What You Get ──────────────────────────────── -->
+  <section class="section" id="resources">
+    <div class="section-inner--wide">
+
+      <div class="eyebrow">
+        <span class="eyebrow-rule"></span>
+        <span class="eyebrow-label">What You Get</span>
+      </div>
+
+      <div class="resource-grid">
+
+        <div class="resource-item">
+          <p class="resource-name">£100k–£200k</p>
+          <p class="prose-dim">
+            A first cheque with no milestone-based tranches and no syndicate
+            delays. Capital when you need it to move.
+          </p>
+        </div>
+
+        <div class="resource-item">
+          <p class="resource-name">Compute &amp; API Credits</p>
+          <p class="prose-dim">
+            Direct access to Anthropic and OpenAI API credits. Build and scale
+            without infrastructure cost eating your runway.
+          </p>
+        </div>
+
+        <div class="resource-item">
+          <p class="resource-name">Techstars Network</p>
+          <p class="prose-dim">
+            Access to Techstars alumni, mentor pool, and deal flow across
+            50+ countries. Introductions that take years to earn elsewhere.
+          </p>
+        </div>
+
+        <div class="resource-item">
+          <p class="resource-name">Path to Series A</p>
+          <p class="prose-dim">
+            Existing relationships with NI's seed-stage funds mean we're
+            already talking to your next investors before you are.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─── ⑤ About ─────────────────────────────────────── -->
+  <section class="section" id="about">
+    <div class="section-inner">
+
+      <div class="eyebrow">
+        <span class="eyebrow-rule"></span>
+        <span class="eyebrow-label">About</span>
+      </div>
+
+      <div class="prose-stack">
+        <p class="prose">
+          Blanche is managed by Ian and Layla, two GPs with roots in Northern
+          Ireland and deep integration with the Techstars ecosystem. The fund
+          is DfE-aligned and built in partnership with Anthropic and OpenAI —
+          relationships that give portfolio companies a material advantage in
+          compute access and model development.
+        </p>
+        <p class="prose">
+          We're not a grant programme or an accelerator. We're a venture fund
+          writing first cheques into AI-native companies. We're based in
+          Belfast, we know the landscape, and we intend to be the most useful
+          early partner you'll have.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ─── ⑥ Apply ─────────────────────────────────────── -->
+  <section class="section" id="apply">
+    <div class="section-inner">
+
+      <div class="eyebrow">
+        <span class="eyebrow-rule"></span>
+        <span class="eyebrow-label">Apply</span>
+      </div>
+
+      <p class="prose-dim" style="margin-bottom: 3.5rem;">Tell us what you're building.</p>
+
+      <form class="form-stack" id="applyForm" novalidate>
+
+        <div class="form-group">
+          <label class="form-label" for="fname">Name</label>
+          <input class="form-field" type="text"  id="fname"     name="name"        placeholder="Your name"                       autocomplete="name"  required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="femail">Email</label>
+          <input class="form-field" type="email" id="femail"    name="email"       placeholder="your@email.com"                  autocomplete="email" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="fbuilding">What are you building?</label>
+          <input class="form-field" type="text"  id="fbuilding" name="building"    placeholder="One sentence"                                         required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="findustry">Which industry?</label>
+          <input class="form-field" type="text"  id="findustry" name="industry"    placeholder="e.g. Insurance, Healthcare, Logistics"                required>
+        </div>
+
+        <div>
+          <button type="submit" class="submit-btn">Submit</button>
+        </div>
+
+      </form>
+
+      <div class="form-success" id="formSuccess">
+        <p>Application received. We'll be in touch.</p>
+      </div>
+
+      <p class="prose-dim" style="margin-top: 4rem; font-size: 0.875rem;">
+        We read everything. We respond to everything.
+      </p>
+
+    </div>
+  </section>
+
+
+  <!-- ─── Footer ──────────────────────────────────────── -->
+  <footer class="site-footer">
+    <span class="footer-logo">Blanche</span>
+    <span class="footer-note">Belfast, Northern Ireland &middot; First Cheque AI Fund</span>
+  </footer>
+
+
+  <script>
+    // Nav: add scrolled class once user scrolls past hero
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 80);
+    }, { passive: true });
+
+    // Form: demo submit — fade out form, reveal confirmation
+    const form    = document.getElementById('applyForm');
+    const success = document.getElementById('formSuccess');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      form.style.transition = 'opacity 0.35s ease';
+      form.style.opacity    = '0';
+      setTimeout(() => {
+        form.style.display   = 'none';
+        success.style.display = 'block';
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => { success.style.opacity = '1'; });
+        });
+      }, 350);
+    });
+  </script>
+
+</body>
+</html>
